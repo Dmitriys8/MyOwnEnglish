@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "tenses")
+@Table(name = "tenses", schema = "tenses")
 @Getter
 @Setter
 @AllArgsConstructor
