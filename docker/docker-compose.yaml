@@ -1,0 +1,38 @@
+version: "3.9"
+
+volumes:
+  postgres:
+    driver: local
+  initpostgres:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: './init'
+
+
+
+services:
+  postgres:
+    image: postgres:12
+    environment:
+      POSTGRES_PASSWORD: 'postgres'
+      PGDATA: '/var/lib/postgresql/data'
+    ports:
+      - '5432:5432'
+    volumes:
+      - initpostgres:/docker-entrypoint-initdb.d
+      - postgres:/var/lib/postgresql/data
+
+#comment whole service description below if you want to run application locally not in docker
+  tenses-msvc:
+    image: tenses-msvc:latest
+    build:
+      context: ../../MyOwnEnglish
+      dockerfile: docker/Dockerfile
+      args:
+        PROJ_DIR: '/Users/d.yakovlev/Documents/GitHub/MyOwnEnglish/'
+    ports:
+      - '8080:8080'
+    depends_on:
+      - postgres

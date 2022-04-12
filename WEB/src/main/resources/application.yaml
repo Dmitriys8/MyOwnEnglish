@@ -14,12 +14,18 @@ spring:
     enabled: false
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: 'jdbc:postgresql://localhost:5432/tense_db'
-    username: 'postgres'
-    password: 'postgres'
+    url: 'jdbc:postgresql://localhost:5432/tenses_db'
+    username: 'tenses_app'
+    password: 'tenses_app'
+
   jpa:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath*:database/initDB.sql
+      data-locations: classpath*:database/populateDB.sql
 
 logging:
   level:
