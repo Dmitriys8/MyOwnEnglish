@@ -14,6 +14,8 @@
         <module>API</module>
         <module>WEB</module>
         <module>REPO</module>
+        <module>SERVICE</module>
+        <module>HELPER</module>
     </modules>
 
     <groupId>com.yds</groupId>

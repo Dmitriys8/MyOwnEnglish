@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - include:
+      file: classpath*:database/changelog/V.0.0.0/db.changelog-001-init.sql
+  - include:
+      file: classpath*:database/changelog/V.0.0.0/db.changelog-002-populate.sql
+  - include:
+      file: classpath*:database/changelog/V.0.0.1/db.changelog-001-add-examples-tables.sql
+  - include:
+      file: classpath*:database/changelog/V.0.0.1/db.changelog-002-populate-cases-table.sql
+  - include:
+      file: classpath*:database/changelog/V.0.0.1/db.changelog-003-populate-examples-table.sql

@@ -3,12 +3,6 @@ version: "3.9"
 volumes:
   postgres:
     driver: local
-  initpostgres:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: './init'
 
 
 
@@ -21,7 +15,7 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - initpostgres:/docker-entrypoint-initdb.d
+      - ./init:/docker-entrypoint-initdb.d
       - postgres:/var/lib/postgresql/data
 
 #comment whole service description below if you want to run application locally not in docker

@@ -10,22 +10,28 @@ springdoc:
     path: '/api-docs'
 
 spring:
+#  liquibase settings
   liquibase:
-    enabled: false
+    enabled: true
+    change-log: classpath*:database/changelog/db.changelog.yaml
+    liquibase-schema: tenses
+    default-schema: tenses
+#    datasource settings
   datasource:
     driver-class-name: org.postgresql.Driver
     url: 'jdbc:postgresql://localhost:5432/tenses_db'
     username: 'tenses_app'
     password: 'tenses_app'
-
+#    jpa settings
   jpa:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
   sql:
     init:
-      mode: always
-      schema-locations: classpath*:database/initDB.sql
-      data-locations: classpath*:database/populateDB.sql
+      mode: never
 
 logging:
   level:
